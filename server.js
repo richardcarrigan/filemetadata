@@ -1,9 +1,10 @@
 'use strict';
 
-var express = require('express');
-var cors = require('cors');
-
-// require and use "multer"...
+const cors = require('cors');
+const dotenv = require('dotenv').config();
+const express = require('express');
+const multer = require('multer');
+const port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -18,6 +19,6 @@ app.get('/hello', function(req, res){
   res.json({greetings: "Hello, API"});
 });
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log('Node.js listening ...');
+app.listen(port, function () {
+  console.log(`Node.js listening at port ${port}...`);
 });
