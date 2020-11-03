@@ -5,6 +5,7 @@ const dotenv = require('dotenv').config();
 const express = require('express');
 const multer = require('multer');
 const port = process.env.PORT || 3000;
+const upload = multer({ dest: 'uploads/' });
 
 var app = express();
 
@@ -15,7 +16,7 @@ app.get('/', function (req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-app.get('/hello', function(req, res){
+app.post('/api/fileanalyse', upload.single('upfile'), function(req, res){
   res.json({greetings: "Hello, API"});
 });
 
